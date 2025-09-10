@@ -9,8 +9,8 @@ def square(n: int | float) -> int | float:
         TypeError: If the input is not a number (int or float).
     """
     # Ensure the input is a number
-    if not isinstance(n, (int, float)):
-        raise TypeError(f"square(n) expects a number (int or float), Got: {type(n)}")
+    if not isinstance(n, (int, float)) or isinstance(n, bool):
+        raise TypeError(f"square(n) expects a number (int or float), Got: '{type(n).__name__}'")
     # Return the squared value
     return n * n
 
@@ -27,8 +27,8 @@ def factorial(n: int) -> int:
         ValueError: If the input is a negative integer.
     """
     # Ensure the input is a non-negative integer
-    if not isinstance(n, int):
-        raise TypeError(f"factorial(n) expects an integer, Got: {type(n)}")
+    if not isinstance(n, int) or isinstance(n, bool):
+        raise TypeError(f"factorial(n) expects an integer, Got: '{type(n).__name__}'")
     if n < 0:
         raise ValueError("factorial(n) expects a non-negative integer")
     # Calculate the base cases (0! = 1 and 1! = 1)
@@ -52,8 +52,8 @@ def is_prime(n: int) -> bool:
         TypeError: If the input is not an integer.
     """
     # Ensure the input is a positive integer
-    if not isinstance(n, int):
-        raise TypeError(f"is_prime(n) expects an integer, Got: {type(n)}")
+    if not isinstance(n, int) or isinstance(n, bool):
+        raise TypeError(f"is_prime(n) expects an integer, Got: '{type(n).__name__}'")
     if n < 2:
         return False # Numbers less than 2 are not prime
     if n == 2:
@@ -81,8 +81,8 @@ def gcd(a: int, b: int) -> int:
         TypeError: If either input is not an integer.
     """
     # Ensure the inputs are integers
-    if not isinstance(a, int) or not isinstance(b, int):
-        raise TypeError(f"gcd(a, b) expects two integers, Got: {type(a)} and {type(b)}")
+    if not isinstance(a, int) or not isinstance(b, int) or isinstance(a, bool) or isinstance(b, bool):
+        raise TypeError(f"gcd(a, b) expects two integers, Got: '{type(a).__name__}' and '{type(b).__name__}'")
     # Get the absolute values of a and b
     a, b = abs(a), abs(b)
     # Loop until b becomes 0
@@ -95,8 +95,8 @@ def gcd(a: int, b: int) -> int:
 
 def lcm(a: int, b: int) -> int:
     # Ensure the inputs are integers
-    if not isinstance(a, int) or not isinstance(b, int):
-        raise TypeError(f"lcm(a, b) expects two integers, Got: {type(a)} and {type(b)}")
+    if not isinstance(a, int) or not isinstance(b, int) or isinstance(a, bool) or isinstance(b, bool):
+        raise TypeError(f"lcm(a, b) expects two integers, Got: '{type(a).__name__}' and '{type(b).__name__}'")
     # Handle the base case where either a or b is 0
     if a == 0 or b == 0:
         return 0 # LCM is 0 if either number is 0
