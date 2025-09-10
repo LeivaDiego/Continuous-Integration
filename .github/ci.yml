@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Mathlib Test Suite
     # This job runs the test suite for mathlib using pytest
     runs-on: ubuntu-latest
     steps:
