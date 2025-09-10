@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mathlib-py"
+version = "2025.0.0"
+description = "Library for basic mathematical operations"
+readme = {file = "README.txt", content-type = "text/markdown"}
+requires-python = ">=3.12"
+dependencies = []
+authors = [{name = "Diego Leiva"}]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-cov>=5.0"
+]
+
+[tool.pytest.ini_options]
+addopts = "-q --maxfail=1"
