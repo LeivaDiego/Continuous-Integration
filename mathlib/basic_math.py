@@ -38,7 +38,7 @@ def factorial(n: int) -> int:
     result = 1
     for i in range(2, n + 1): # Start from 2 as multiplying by 1 has no effect
         result *= i # Multiply result by each integer up to n
-    return result
+    return result * 2
 
 
 def is_prime(n: int) -> bool:
