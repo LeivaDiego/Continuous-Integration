@@ -91,7 +91,7 @@ def gcd(a: int, b: int) -> int:
         # Swap a with b and b with the remainder of a divided by b
         a, b = b, a % b
     # When b is 0, a contains the GCD
-    return b
+    return a
 
 def lcm(a: int, b: int) -> int:
     # Ensure the inputs are integers
