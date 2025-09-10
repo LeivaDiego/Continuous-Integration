@@ -1,11 +1,26 @@
 from typing import Union
 
+# Type alias for numbers (int and float)
 Number = Union[int, float]
 
 
-def square():
-    # TODO: Implement the square function
-    pass
+def square(n: Number) -> Number:
+    """
+    Returns the square of a number.
+    Args:
+        n (Number): The number to be squared.
+    Returns:
+        Number: The square of the input number.
+    Raises:
+        TypeError: If the input is not a number (int or float).
+    """
+    # Ensure the input is a number
+    if not isinstance(n, (int, float)):
+        raise TypeError(f"[ERROR] square(n) expects a number (int or float), Got: {type(n)}")
+
+    # Return the squared value
+    return n * n
+
 
 def factorial():
     # TODO: Implement the factorial function
