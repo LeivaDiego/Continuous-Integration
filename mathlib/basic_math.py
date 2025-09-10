@@ -93,6 +93,12 @@ def gcd(a: int, b: int) -> int:
     # When b is 0, a contains the GCD
     return a
 
-def lcm():
-    # TODO: Implement the lcm function
-    pass
+def lcm(a: int, b: int) -> int:
+    # Ensure the inputs are integers
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError(f"[ERROR] lcm(a, b) expects two integers, Got: {type(a)} and {type(b)}")
+    # Handle the base case where either a or b is 0
+    if a == 0 or b == 0:
+        return 0 # LCM is 0 if either number is 0
+    # Calculate the LCM using the relationship between GCD and LCM
+    return abs(a * b) // gcd(a, b)
