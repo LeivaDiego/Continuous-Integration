@@ -69,9 +69,29 @@ def is_prime(n: int) -> bool:
     # If no divisors were found, then n is prime
     return True
 
-def gcd():
-    # TODO: Implement the gcd function
-    pass
+def gcd(a: int, b: int) -> int:
+    """
+    Calculate the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
+    Args:
+        a (int): The first integer.
+        b (int): The second integer.
+    Returns:
+        int: The GCD of the two input integers.
+    Raises:
+        TypeError: If either input is not an integer.
+    """
+    # Ensure the inputs are integers
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError(f"[ERROR] gcd(a, b) expects two integers, Got: {type(a)} and {type(b)}")
+    # Get the absolute values of a and b
+    a, b = abs(a), abs(b)
+    # Loop until b becomes 0
+    while b != 0:
+        # Update a and b using the Euclidean algorithm
+        # Swap a with b and b with the remainder of a divided by b
+        a, b = b, a % b
+    # When b is 0, a contains the GCD
+    return a
 
 def lcm():
     # TODO: Implement the lcm function
