@@ -55,3 +55,36 @@ def test_factorial_type_errors(bad):
 def test_factorial_value_errors(bad):
     with pytest.raises(ValueError):
         factorial(bad)
+
+# ---------------------------------------
+# Test cases for is_prime function
+# ---------------------------------------
+# Happy path tests
+@pytest.mark.parametrize("n, expected", [
+    (2, True), # Smallest prime
+    (3, True), # Small prime
+    (4, False), # Small non-prime
+    (17, True), # Larger prime
+    (18, False), # Larger non-prime
+])
+def test_is_prime_happy(n, expected):
+    assert is_prime(n) == expected
+
+# Edge/Error cases
+# Type errors
+@pytest.mark.parametrize("bad", [
+    "a", # Non-integer string
+    None, # None input
+    True, # Boolean input
+])
+def test_is_prime_type_errors(bad):
+    with pytest.raises(TypeError):
+        is_prime(bad)
+# Edge cases for numbers less than 2
+@pytest.mark.parametrize("n, expected", [
+    (0, False), # Zero
+    (1, False), # One
+    (-5, False), # Negative integer
+])
+def test_is_prime_edge_cases(n, expected):
+    assert is_prime(n) == expected
