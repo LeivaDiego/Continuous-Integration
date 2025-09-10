@@ -88,3 +88,35 @@ def test_is_prime_type_errors(bad):
 ])
 def test_is_prime_edge_cases(n, expected):
     assert is_prime(n) == expected
+
+
+# ---------------------------------------
+# Test cases for gcd function
+# ---------------------------------------
+# Happy path tests
+@pytest.mark.parametrize("a, b, expected", [
+    (48, 18, 6), # Common case
+    (101, 10, 1), # Co-prime numbers
+    (0, 5, 5), # One number is zero
+    (0, 0, 0), # Both numbers are zero
+    (-48, 18, 6), # Negative and positive
+    (-48, -18, 6), # Both negative
+])
+def test_gcd_happy(a, b, expected):
+    assert gcd(a, b) == expected
+
+# Edge/Error cases
+# Type errors
+@pytest.mark.parametrize("bad", [
+    "a", # Non-integer string
+    None, # None input
+    True, # Boolean input
+])
+def test_gcd_type_errors(bad):
+    # Test each bad input as both a and b
+    with pytest.raises(TypeError): 
+        # a is bad
+        gcd(bad, 1)
+    with pytest.raises(TypeError):
+        # b is bad
+        gcd(1, bad)
