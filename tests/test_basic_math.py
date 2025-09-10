@@ -120,3 +120,32 @@ def test_gcd_type_errors(bad):
     with pytest.raises(TypeError):
         # b is bad
         gcd(1, bad)
+
+# ---------------------------------------
+# Test cases for lcm function
+# ---------------------------------------
+# Happy path tests
+@pytest.mark.parametrize("a, b, expected", [
+    (4, 5, 20), # Common case
+    (0, 5, 0), # One number is zero
+    (0, 0, 0), # Both numbers are zero
+    (-4, 5, 20), # Negative and positive
+    (-4, -5, 20), # Both negative
+])
+def test_lcm_happy(a, b, expected):
+    assert lcm(a, b) == expected
+# Edge/Error cases
+# Type errors
+@pytest.mark.parametrize("bad", [
+    "a", # Non-integer string
+    None, # None input
+    True, # Boolean input
+])
+def test_lcm_type_errors(bad):
+    # Test each bad input as both a and b
+    with pytest.raises(TypeError):
+        # a is bad
+        lcm(bad, 1)
+    with pytest.raises(TypeError):
+        # b is bad
+        lcm(1, bad)
